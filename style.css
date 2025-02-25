@@ -14,6 +14,9 @@ body {
     --large-size: calc(100vh / 6 * 1.414);
     --small-size: calc(var(--large-size) / 12);
     --text-size: calc(80vh / 6 * 1.414 / 6);
+    --right-margin: 32vw; 
+    --left-margin: calc(var(--right-margin) - 1vw); 
+    --gap: calc((100vw - (var(--left-margin) + var(--right-margin))) / 3); 
 }
 
 .shape {
@@ -60,7 +63,7 @@ body {
 }
 @keyframes moveAndShrink {
     0% { left: 50vw; width: var(--large-size); height: var(--large-size); }
-    100% { left: 38vw; width: var(--small-size); height: var(--small-size); }
+    100% { left: var(--left-margin); width: var(--small-size); height: var(--small-size); } /* 도착 위치 변수화 */
 }
 @keyframes infiniteShapeShift {
     0%, 100% {
