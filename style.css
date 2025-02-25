@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:root {
+    --unit-size: calc(100vh / 25);
+    --large-size: calc(100vh / 6 * 1.414);
+    --small-size: calc(var(--large-size) / 12);
+    --text-size: calc(80vh / 6 * 1.414 / 6);
+}
+
+.shape {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+#shapeA {
+    width: var(--unit-size);
+    height: var(--unit-size);
+    border: 1px solid black;
+    border-radius: 50%;
+    left: 75vw;
+}
+
+#shapeB {
+    width: var(--small-size);
+    height: var(--small-size);
+    background-color: black;
+    border-radius: 50%;
+    left: 50vw;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.svg-text {
+    position: absolute;
+    top: 50%;
+    width: var(--text-size);
+    height: var(--text-size);
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes moveAndTransform {
+    0% { left: 75vw; border-radius: 50%; transform: translate(-50%, -50%) rotate(0deg); }
+    100% { left: 50vw; border-radius: 0; transform: translate(-50%, -50%) rotate(45deg); width: var(--large-size); height: var(--large-size); }
+}
+@keyframes scaleAndSquare {
+    0% { width: var(--unit-size); height: var(--unit-size); border-radius: 50%; }
+    100% { width: var(--large-size); height: var(--large-size); border-radius: 0; }
+}
+@keyframes moveAndShrink {
+    0% { left: 50vw; width: var(--large-size); height: var(--large-size); }
+    100% { left: 38vw; width: var(--small-size); height: var(--small-size); }
+}
+@keyframes infiniteShapeShift {
+    0%, 100% {
+        border-radius: 0;
+        width: var(--small-size);
+        height: var(--small-size);
+        transform: translate(-50%, -50%) rotate(45deg) scale(1);
+    }
+    25% {
+        border-radius: 50%;
+        width: var(--small-size);
+        height: var(--small-size);
+    }
+    50% {
+        border-radius: 50%;
+        width: var(--small-size);
+        height: var(--small-size);
+        transform: translate(-50%, -50%) rotate(45deg) scale(0.0);
+    }
+    75% {
+        border-radius: 50%;
+        width: var(--small-size);
+        height: var(--small-size);
+    }
+}
